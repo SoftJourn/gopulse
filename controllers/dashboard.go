@@ -1,7 +1,7 @@
 package controllers
 
 import (
-    //"fmt"
+	//"fmt"
 	"github.com/astaxie/beego"
 	"net/http"
 )
@@ -11,7 +11,7 @@ type DashboardController struct {
 }
 
 func (this *DashboardController) Get() {
-    // https://beego.me/docs/intro/
+	// https://beego.me/docs/intro/
 
 	email := this.GetSession("email")
 	if email == nil {
@@ -20,7 +20,7 @@ func (this *DashboardController) Get() {
 		this.Redirect("/", http.StatusInternalServerError) //http.StatusFound)
 		return
 	}
-    this.Data["Name"] = this.GetSession("name")
+	this.Data["Name"] = this.GetSession("name")
 	this.Data["Email"] = email
 
 	//beego.Info(fmt.Sprintf("%#v", user))
