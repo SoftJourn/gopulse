@@ -26,6 +26,21 @@ PRIMARY KEY (`session_key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 
+```mysql
+CREATE TABLE `user` (
+    `i_d` INT(11) NOT NULL AUTO_INCREMENT, 
+    `name` VARCHAR(50), 
+    `email` VARCHAR(100), 
+    `nickname` VARCHAR(50), 
+    `avatar_u_r_l` VARCHAR(200), 
+    `provider_name` VARCHAR(50), 
+    `i_d_for_provider` VARCHAR(100), 
+    `auth_code` VARCHAR(100),
+    PRIMARY KEY (`i_d`),
+    UNIQUE (`email`,`provider_name`)
+);
+```
+
 ## Resources
 
   * https://github.com/stretchr/gomniauth

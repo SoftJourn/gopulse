@@ -8,6 +8,7 @@ import (
 	"github.com/stretchr/gomniauth/providers/github"
 	"github.com/stretchr/gomniauth/providers/google"
 	"github.com/stretchr/objx"
+	"gopulse/models"
 	//	"io"
 	"net/http"
 )
@@ -113,10 +114,19 @@ func (this *LoginController) CallbackHandler() {
 	user, userErr := provider.GetUser(creds)
 
 	if userErr != nil {
+		beego.Error(userErr.Error())
+		this.Redirect("/", http.StatusInternalServerError)
+		return
+	}
+
+	t, err := models.NewUser(user, provider.Name())
+	if err != nil {
 		beego.Error(err.Error())
 		this.Redirect("/", http.StatusInternalServerError)
 		return
 	}
+	models.DefaultUserManager.Save(t)
+
 
 	/*
 	   &{map[

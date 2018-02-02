@@ -8,11 +8,15 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"gopulse/controllers"
+    "gopulse/models"
 )
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("mysqlstring"))
+	orm.RegisterModel(new(models.User))
+	orm.Debug = true
+    orm.NewOrm() 
 }
 
 func main() {
