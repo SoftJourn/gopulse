@@ -23,7 +23,7 @@ func main() {
 	beego.BConfig.WebConfig.Session.SessionOn = true
 	beego.BConfig.WebConfig.Session.SessionProvider = "mysql"
 	beego.BConfig.WebConfig.Session.SessionProviderConfig = beego.AppConfig.String("mysqlstring")
-
+	beego.SetStaticPath("/www", "./app/www")
 	beego.Router("/", &controllers.LoginController{})
 	beego.Router("/auth/:id:string/login", &controllers.LoginController{}, "get:LoginHandler")
 	beego.Router("/auth/:id:string/callback", &controllers.LoginController{}, "get:CallbackHandler")
