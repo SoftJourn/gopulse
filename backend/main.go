@@ -2,21 +2,19 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	//"github.com/astaxie/beego/session"
+	"github.com/astaxie/beego/orm"
 	_ "github.com/astaxie/beego/session/mysql"
 	_ "github.com/go-sql-driver/mysql"
-
-	"gopulse/controllers"
-    "gopulse/models"
+	"gopulse/backend/controllers"
+	"gopulse/backend/models"
 )
 
 func init() {
-	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("mysqlstring"))
 	orm.RegisterModel(new(models.User))
 	orm.Debug = true
-    orm.NewOrm() 
+	orm.NewOrm()
 }
 
 func main() {

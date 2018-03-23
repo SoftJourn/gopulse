@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/astaxie/beego"
-	"gopulse/models"
+	"gopulse/backend/models"
 )
 
 type TaskController struct {

@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/gomniauth/providers/github"
 	"github.com/stretchr/gomniauth/providers/google"
 	"github.com/stretchr/objx"
-	"gopulse/models"
+	"gopulse/backend/models"
 	//	"io"
 	"net/http"
 )
@@ -18,6 +18,10 @@ const (
 	// are coded to this path for this example.
 	Address string = ":8080"
 )
+
+type MainController struct {
+	beego.Controller
+}
 
 type LoginController struct {
 	beego.Controller
@@ -119,14 +123,13 @@ func (this *LoginController) CallbackHandler() {
 		return
 	}
 
-	t, err := models.NewUser(user, provider.Name())
+	t, err := models.CreateProviderUser(user, provider.Name())
 	if err != nil {
 		beego.Error(err.Error())
 		this.Redirect("/", http.StatusInternalServerError)
 		return
 	}
 	models.DefaultUserManager.Save(t)
-
 
 	/*
 	   &{map[
