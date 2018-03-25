@@ -3,10 +3,11 @@ package controllers
 import (
 	"context"
 	"encoding/json"
-	"github.com/astaxie/beego"
-	"github.com/graph-gophers/graphql-go"
 	gql "gopulse/backend/qraphql"
 	"net/http"
+
+	"github.com/astaxie/beego"
+	"github.com/graph-gophers/graphql-go"
 	//_"github.com/graphql-go/graphql"
 )
 
@@ -30,6 +31,7 @@ func (c *GraphqlController) Prepare() {
 
 func (c *GraphqlController) Index() {
 	c.TplName = "graphql/index.html"
+	c.Render()
 }
 
 func (c *GraphqlController) Query() {

@@ -23,4 +23,19 @@ var Schema = `
 	  password: String!
       nickname: String!
 	}
+	type Survey {
+	  id: ID!
+	  title: String!
+	  description: String!
+	  schedule: Schedule!
+	  questions: [Question]!
+	  recipients:
+	}
+	type Question {
+	  id:ID!
+	  title: String!
+	  details: String!
+	  qtype: QType!
+	  category: String!
+	}
 `

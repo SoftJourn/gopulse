@@ -3,9 +3,10 @@ package models
 import (
 	"errors"
 	"fmt"
+	"strconv"
+
 	"github.com/astaxie/beego/orm"
 	"github.com/stretchr/gomniauth/common"
-	"strconv"
 )
 
 var DefaultUserManager *UserManager
@@ -103,7 +104,7 @@ func (m *UserManager) Find(ID int64) (*User, bool) {
 func (m *UserManager) All() ([]*User, error) {
 	var users []*User
 	o := orm.NewOrm()
-	_, err := o.QueryTable("user").Filter("name", "slene").All(&users)
+	_, err := o.QueryTable("user").Filter("FirstName", "LastName").All(&users)
 	return users, err
 }
 

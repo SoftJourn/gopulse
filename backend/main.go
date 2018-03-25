@@ -3,11 +3,14 @@ package main
 import (
 	"github.com/astaxie/beego"
 	//"github.com/astaxie/beego/session"
+
+	"gopulse/backend/models"
+
+	_ "gopulse/backend/routers"
+
 	"github.com/astaxie/beego/orm"
 	_ "github.com/astaxie/beego/session/mysql"
 	_ "github.com/go-sql-driver/mysql"
-	"gopulse/backend/controllers"
-	"gopulse/backend/models"
 )
 
 func init() {
@@ -21,12 +24,5 @@ func main() {
 	beego.BConfig.WebConfig.Session.SessionOn = true
 	beego.BConfig.WebConfig.Session.SessionProvider = "mysql"
 	beego.BConfig.WebConfig.Session.SessionProviderConfig = beego.AppConfig.String("mysqlstring")
-	beego.SetStaticPath("/www", "./app/www")
-	beego.Router("/", &controllers.LoginController{})
-	beego.Router("/auth/:id:string/login", &controllers.LoginController{}, "get:LoginHandler")
-	beego.Router("/auth/:id:string/callback", &controllers.LoginController{}, "get:CallbackHandler")
-	beego.Router("/dashboard/", &controllers.DashboardController{})
-	beego.Router("/task/", &controllers.TaskController{}, "get:ListTasks;post:NewTask")
-	beego.Router("/task/:id:int", &controllers.TaskController{}, "get:GetTask;put:UpdateTask")
 	beego.Run()
 }
