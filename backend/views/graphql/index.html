@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        #graphiql {
+            height: 100vh;
+        }
+    </style>
+    <!--
+  This GraphiQL example depends on Promise and fetch, which are available in
+  modern browsers, but can be "polyfilled" for older browsers.
+  GraphiQL itself depends on React DOM.
+  If you do not want to rely on a CDN, you can host these files locally or
+  include them directly in your favored resource bunder.
+-->
     <script src="https://cdn.jsdelivr.net/es6-promise/4.0.5/es6-promise.auto.min.js"></script>
     <script src="https://cdn.jsdelivr.net/fetch/0.9.0/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/react/15.4.2/react.min.js"></script>

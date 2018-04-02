@@ -29,7 +29,7 @@ var Schema = `
 	  description: String!
 	  schedule: Schedule!
 	  questions: [Question]!
-	  recipients:
+	  recipients: String!
 	}
 	type Question {
 	  id:ID!
@@ -37,5 +37,14 @@ var Schema = `
 	  details: String!
 	  qtype: QType!
 	  category: String!
+	}
+	type QType {
+	  id: ID!
+	  title: String!
+	  type: String!
+	}
+	type Schedule{
+	  id: ID!
+	  value: String!
 	}
 `
